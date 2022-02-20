@@ -134,4 +134,9 @@ nav {
     display: block;
     margin: auto;
   }
+
+  .menu-list.close {
+    right: -100%;
+    transition: all 0.5 ease-in-out;
+  }
 }
