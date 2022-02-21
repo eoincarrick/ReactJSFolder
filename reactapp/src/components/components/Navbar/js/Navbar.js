@@ -8,17 +8,19 @@ const Navbar = () => {
     setClicked(!clicked);
   };
 
-  const menuList = MenuList.map(({ url, title }, index) => {
+  const menuList = MenuList.map(({ url, title, dark, light}, index) => {
     return (
       <li key={index}>
-        <a href={url}>{title}</a>
+        <a className={ clicked ? dark : light} href={url}>
+          {title}
+        </a>
       </li>
     );
   });
   return (
     <nav>
       <div className="logo">
-        VPN<font>Lab</font>
+        VIMKAS<font>VPN</font>
       </div>
       <div className="menu-icon" onClick={CLICKED}>
         <i className={clicked ? "fa fa-times" : "fa fa-bars"}></i>
