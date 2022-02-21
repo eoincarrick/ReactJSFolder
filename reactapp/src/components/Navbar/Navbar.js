@@ -23,7 +23,9 @@ const Navbar = () => {
       <div className="menu-icon" onClick={CLICKED}>
         <i className={clicked ? "fa fa-times" : "fa fa-bars"}></i>
       </div>
-      <ul className={clicked ? "menu-list" : "menu-list close"}>{menuList}</ul>
+      <ul className={clicked ? "menu-list" : "menu-list sdsdsdsdsds"}>
+        {menuList}
+      </ul>
     </nav>
   );
 };

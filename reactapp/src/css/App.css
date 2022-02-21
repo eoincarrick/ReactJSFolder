@@ -12,6 +12,7 @@
   height: 100vh;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 /* Adding a dark overlay on the background image using the code below */
