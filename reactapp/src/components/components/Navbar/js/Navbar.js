@@ -8,12 +8,10 @@ const Navbar = () => {
     setClicked(!clicked);
   };
 
-  const menuList = MenuList.map(({ url, title, dark, light}, index) => {
+  const menuList = MenuList.map(({ url, title }, index) => {
     return (
       <li key={index}>
-        <a className={ clicked ? dark : light} href={url}>
-          {title}
-        </a>
+        <a href={url}>{title}</a>
       </li>
     );
   });
