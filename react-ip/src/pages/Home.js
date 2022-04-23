@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const handleClick = (event) => {
+    console.log(event);
+  };
 
-export default Home
+  const handleClickAgain = (event) => {
+    console.log(` ${event}`);
+  };
+  return (
+    <div>
+      <h2>Homepage</h2>
+      <button onClick={handleClick}>Click Me</button>
+      <button
+        onClick={(event) => {
+          handleClickAgain(event);
+        }}
+      >
+        Click Me
+      </button>
+    </div>
+  );
+};
+
+export default Home;
