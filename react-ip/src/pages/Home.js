@@ -3,7 +3,7 @@
 //     setBlogs(del);
 //   };
 import React, { useState, useEffect } from 'react';
-import { BlogList, Loader, Navbar } from '../components';
+import { BlogList, Loading, Navbar } from '../components';
 import useFetch from '../hooks/useFetch';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {isLoading && <Loader />}
+      {isLoading && <Loading />}
       {blogs && (
         <>
           {' '}

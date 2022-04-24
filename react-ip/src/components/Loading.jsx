@@ -9,7 +9,7 @@ const css = {
   alignItems: 'center',
 };
 
-const Loader = () => {
+const Loading = () => {
   return (
     <div style={css} className='loader'>
       <img src={LoaderIcon} alt='loading image' />
@@ -17,4 +17,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default Loading;
