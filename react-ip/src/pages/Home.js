@@ -10,8 +10,7 @@ const Home = () => {
   const { data: blogs, isLoading } = useFetch('http://localhost:8000/blogs');
 
   return (
-    <div>
-      <Navbar />
+    <div className='content'>
       {isLoading && <Loading />}
       {blogs && (
         <>
