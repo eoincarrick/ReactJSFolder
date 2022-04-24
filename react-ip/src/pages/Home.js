@@ -1,41 +1,47 @@
-import React, { useState } from 'react';
-import { BlogList } from '../components';
+import React, { useState, useEffect } from 'react';
+import { BlogList, Loader } from '../components';
 
 const Home = () => {
-  const [blogs, setBlogs] = useState([
-    {
-      id: 1,
-      title: 'My pain is gone',
-      body: 'Hahaha, this is the end of me now.',
-      author: 'Eoin defaultPropsssssss',
-    },
-    {
-      id: 2,
-      title: 'My pain is come',
-      body: 'Hahaha, this is the start of me now.',
-      author: 'Eoin defaultProps',
-    },
-    {
-      id: 3,
-      title: 'My pain is yet to go and come',
-      body: 'Hahaha, this is the of me now.',
-      author: 'Eoin',
-    },
-  ]);
+  const [blogs, setBlogs] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
+  console.log(blogs);
 
-  const handleClick = (id) => {
-    const del = blogs.filter((blog) => blog.id !== id);
-    setBlogs(del);
-  };
+  //   const handleClick = (id) => {
+  //     const del = blogs.filter((blog) => blog.id !== id);
+  //     setBlogs(del);
+  //   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch('http://localhost:8000/blogs', {
+        method: 'GET',
+        'Content-Type': 'application/json',
+      });
+      console.log(response);
+      if (!response.ok) {
+        throw Error('Could not fetch data correctly');
+      }
+      const data = await response.json();
+      setBlogs(data);
+      setIsLoading(!isLoading);
+    };
+    getData();
+  }, []);
 
   return (
     <div>
-      <BlogList blogs={blogs} title='All Blogs' handleClick={handleClick} />
-      <BlogList
-        blogs={blogs.filter((name) => name.author === 'Eoin')}
-        title="Eoin's Blogs"
-        handleClick={handleClick}
-      />
+      {isLoading && <Loader />}
+      {blogs && (
+        <>
+          {' '}
+          <BlogList blogs={blogs} title='All Blogs' />
+          <BlogList
+            blogs={blogs.filter((name) => name.author === 'Eoin')}
+            title="Eoin's Blogs"
+          />{' '}
+        </>
+      )}
     </div>
   );
 };
